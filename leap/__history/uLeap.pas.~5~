@@ -1,0 +1,20 @@
+unit uLeap;
+
+interface
+
+type
+  TYear = class
+    public
+      class function IsLeapYear(a_nYear : Integer) : Boolean;
+  end;
+
+implementation
+
+class function TYear.IsLeapYear(a_nYear : Integer) : Boolean;
+var
+  bIsDivisibleBy4   : Boolean;
+  bIsDivisibleBy100 : Boolean;
+  bIsDivisibleBy400 : Boolean;
+begin
+
+end;

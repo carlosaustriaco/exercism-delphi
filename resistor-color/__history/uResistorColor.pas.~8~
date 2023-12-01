@@ -1,0 +1,35 @@
+unit uResistorColor;
+
+interface
+
+type
+  TColorsCode = (black  = 0,
+                 brown  = 1,
+                 red    = 2,
+                 orange = 3,
+                 yellow = 4,
+                 green  = 5,
+                 blue   = 6,
+                 violet = 7,
+                 grey   = 8,
+                 white  = 9);
+
+  TResistor = class
+    public
+      class function colorCode(a_strColor : string) : Integer;
+  end;
+
+implementation
+
+uses
+  System.Rtti;
+
+class function TResistor.colorCode(a_strColor : string) : Integer;
+var
+  ccCode : TColorsCode;
+begin
+  ccCode := TRttiEnumerationType.GetValue<TColorsCode>(a_strColor);
+  Result := Integer(ccCode);
+end;
+
+end.

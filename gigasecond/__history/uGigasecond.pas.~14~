@@ -1,0 +1,36 @@
+unit uGigaSecond;
+
+interface
+
+  type
+  TGigasecond = class
+    public
+      class function Add(a_strDate : String) : String;
+  end;
+
+implementation
+
+uses
+  System.SysUtils,
+  System.DateUtils;
+
+class function TGigasecond.Add(a_strDate : String) : String;
+var
+ dtDate       : TDateTime;
+ dtTime       : TDateTime;
+ strDate      : String;
+ strTime      : String;
+ fsDateFormat : TFormatSettings;
+ fsTimeFormat : TFormatSettings;
+begin
+  fsDateFormat := TFormatSettings.Create;
+  fsTimeFormat := TFormatSettings.Create;
+  fsDateFormat.ShortDateFormat := 'yyyy-mm-dd';
+  fsTimeFormat.ShortTimeFormat := 'hh:nn:ss';
+
+  dtDate := StrToDateTime(a_strDate, fsDateFormat);
+  dtDate := IncSecond(dtDate, 1000000000);
+  Result := DatetimeToStr(dtDate);
+end;
+
+end.
